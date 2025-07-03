@@ -2,13 +2,19 @@ import { BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react' 
 import { motion } from 'framer-motion'
 import './App.css'
+import headshot from './assets/headshot.jpeg';
+import { BASE_PATH } from './config';
 
 function Home() {
   return (
   <div>
     <h1 className='subtitle'>About Me</h1>
-    <img src={'src/assets/headshot.jpeg'} alt='Logo' width='300px' height='300px'></img>
-    <p>Hi, my name is Nikolas Varga. I'm currently a 5th year student at Northeastern University</p>
+    <img src={headshot} alt='Headshot' width='300px' height='300px'></img>
+    <p>Hi, my name is Nikolas Varga. 
+      I'm studying electrical engineering and music technology at Northeastern University.
+      I recently completed two co-ops studying memory and audiovisual perception at the Garner Lab and developing organic photovoltaic technologies at Nano-C, Inc. 
+      My personal and professional interests include advancing consumer audio, digital signal processing, climatetech, and music technology.
+    </p>
   </div>
     );
 }
@@ -72,18 +78,18 @@ function App() {
               position: 'relative',
             }}
           >
-            <Link to='/'>home</Link>
-            <Link to='/projects'>projects</Link>
-            <Link to='/writing'>writing</Link>
-            <Link to='/passions'>passions</Link>
+            <Link to={`${BASE_PATH}`}>home</Link>
+            <Link to={`${BASE_PATH}`+'/projects'} >projects</Link>
+            <Link to={`${BASE_PATH}`+'/writing'}>writing</Link>
+            <Link to={`${BASE_PATH}`+'/passions'}>passions</Link>
           </motion.nav>
         </div>
       </header>
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/projects' element={<Projects />} />
-        <Route path='/writing' element={<Writing />} />
-        <Route path='/passions' element={<Passions />} />
+        <Route path={`${BASE_PATH}`} element={<Home />} />
+        <Route path={`${BASE_PATH}`+'/projects'} element={<Projects />} />
+        <Route path={`${BASE_PATH}`+'/writing'} element={<Writing />} />
+        <Route path={`${BASE_PATH}`+'/passions'} element={<Passions />} />
       </Routes>
     </Router>
   )
