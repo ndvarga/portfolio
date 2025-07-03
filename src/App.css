@@ -1,0 +1,85 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  margin: 0 auto;
+  padding: 0 0;
+}
+
+.header-bar {
+  width: 100vw;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  background: #221a19;
+  padding: 1rem 2rem;
+  gap: 2rem;
+  background-color: #888;
+  flex-wrap: wrap;
+}
+
+.main-title {
+  font-family: "Bitcount Grid Double";
+  font-weight: 300;
+  color: #fff;
+  font-size: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.top-menu {
+  display: flex;
+  gap: 2rem;
+  margin-left: auto;
+}
+
+.top-menu a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+@media (max-width: 600px) {
+  .header-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  .main-title {
+    font-size: 1.5rem;
+  }
+  .top-menu {
+    gap: 1rem;
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
