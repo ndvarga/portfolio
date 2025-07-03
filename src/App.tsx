@@ -7,7 +7,11 @@ import { BASE_PATH } from './config';
 
 function Home() {
   return (
-  <div>
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 0.8 }}
+  >
     <h1 className='subtitle'>About Me</h1>
     <img src={headshot} alt='Headshot' width='300px' height='300px'></img>
     <p>Hi, my name is Nikolas Varga. 
@@ -15,7 +19,7 @@ function Home() {
       I recently completed two co-ops studying memory and audiovisual perception at the Garner Lab and developing organic photovoltaic technologies at Nano-C, Inc. 
       My personal and professional interests include advancing consumer audio, digital signal processing, climatetech, and music technology.
     </p>
-  </div>
+  </motion.div>
     );
 }
 
