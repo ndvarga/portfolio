@@ -1,16 +1,17 @@
-import { BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom'
+import { HashRouter as Router, Routes, Route, Link} from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react' 
 import { motion } from 'framer-motion'
+import CustomPdfViewer from './PDFViewer.tsx'
 import './App.css'
 import headshot from './assets/headshot.jpeg';
-import { BASE_PATH } from './config';
+
 
 function Home() {
   return (
   <motion.div
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
-    transition={{ duration: 0.8 }}
+    transition={{ duration: 1 }}
   >
     <h1 className='subtitle'>About Me</h1>
     <img src={headshot} alt='Headshot' width='300px' height='300px'></img>
@@ -24,20 +25,46 @@ function Home() {
 }
 
 function Projects() {
-  return <div>Projects Page</div>;
+  return (
+    <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 1 }}>
+      <h1 className='page-title'>Projects</h1>
+      <h2 className='subtitle'>Candlemaker</h2>
+      <h2 className='subtitle'> Tubender</h2>
+    </motion.div>
+  );
 }
 
 function Writing() {
-  return <div>Writing Page</div>
+  return (
+    <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 1 }}>
+      <h1>Writing Page</h1>
+      <h2>Music on the Periphery: an inquisition into hyperfreak and hyperflip </h2>
+      <p>This essay discusses the emergent SoundCloud subgenres of 
+        hyperfreak and hyperflip and their social and economic contexts. 
+        It traces the feminist, queer roots of electronic dance music 
+        back to the disco movement and begs the question: 
+        Can these new genres sustain themselves in real spaces as queer, feminist safe havens, or are they doomed to fade into the lull of capitalist realism?</p>
+      <CustomPdfViewer file='/portfolio/musicontheperiphery.pdf' />
+    </motion.div>
+      );
 }
 
 function Passions() {
-  return <div>Passions Page</div>
+  return <div>
+    <h1>Passions Page</h1>
+    </div>
 }
 
 function App() {
   const [menuX, setMenuX] = useState(0);
   const [menuY, setMenuY] = useState(0);
+  const [sidebarOpen, setSidebarOpen] = useState(false); 
   const lastSize = useRef({ width: window.innerWidth, height: innerHeight });
 
   let timeout: number | undefined;
@@ -74,26 +101,31 @@ function App() {
       <header>
         <div className='header-bar'>
           <h1 className='main-title'>Nikolas Varga</h1>
+          <button
+            className="menu-toggle"
+            onClick={() => setSidebarOpen((open) => !open)}
+            aria-label="Toggle menu"
+          >
+            &#9776;
+          </button>
           <motion.nav 
-            className='top-menu'
+            className={`top-menu${sidebarOpen ? ' open ' : ''}`}
             animate={{ x: menuX, y: menuY }}
             transition={{ type:'spring', stiffness: 100, damping: 12}}
-            style={{
-              position: 'relative',
-            }}
           >
-            <Link to={`${BASE_PATH}`}>home</Link>
-            <Link to={`${BASE_PATH}`+'/projects'} >projects</Link>
-            <Link to={`${BASE_PATH}`+'/writing'}>writing</Link>
-            <Link to={`${BASE_PATH}`+'/passions'}>passions</Link>
+          
+            <Link to='/' onClick={() => setSidebarOpen(false)}>home</Link>
+            <Link to='/projects' onClick={() => setSidebarOpen(false)}>projects</Link>
+            <Link to='/writing' onClick={() => setSidebarOpen(false)}>writing</Link>
+            <Link to='/passions' onClick={() => setSidebarOpen(false)}>passions</Link>
           </motion.nav>
         </div>
       </header>
       <Routes>
-        <Route path={`${BASE_PATH}`} element={<Home />} />
-        <Route path={`${BASE_PATH}`+'/projects'} element={<Projects />} />
-        <Route path={`${BASE_PATH}`+'/writing'} element={<Writing />} />
-        <Route path={`${BASE_PATH}`+'/passions'} element={<Passions />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/projects' element={<Projects />} />
+        <Route path='/writing' element={<Writing />} />
+        <Route path='/passions' element={<Passions />} />
       </Routes>
     </Router>
   )
