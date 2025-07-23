@@ -43,7 +43,7 @@ function Writing() {
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     transition={{ duration: 1 }}>
-      <h1>Writing Page</h1>
+      <h1 className='tomorrow-regular'>Writing Page</h1>
       <h2>Music on the Periphery: an inquisition into hyperfreak and hyperflip </h2>
       <p>This essay discusses the emergent SoundCloud subgenres of 
         hyperfreak and hyperflip and their social and economic contexts. 
@@ -51,6 +51,7 @@ function Writing() {
         back to the disco movement and begs the question: 
         Can these new genres sustain themselves in real spaces as queer, feminist safe havens, or are they doomed to fade into the lull of capitalist realism?</p>
       <CustomPdfViewer file='/portfolio/musicontheperiphery.pdf' />
+      <h2>Essay on Resources</h2>
     </motion.div>
       );
 }

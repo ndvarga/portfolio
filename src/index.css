@@ -59,11 +59,17 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  margin: 2rem 1rem;
+}
+
+h2 {
+  font-size: 2em;
+  margin: 2rem 1rem;
 }
 
 p {
   margin: 1rem 1rem;
-  text-align: center;
+  text-align: justify;
 }
 .subtitle {
   text-align: center;
@@ -91,6 +97,23 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+.arrow-button {
+  background: none;
+  color: black;
+  transition: color 0.25s;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.arrow-button:hover {
+  color: aquamarine;
+}
+
+.arrow-button:disabled {
+  color: rgba(0, 0, 0, 0.5);
 }
 
 @media (prefers-color-scheme: light) {
