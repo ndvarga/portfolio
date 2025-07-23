@@ -125,6 +125,18 @@ body {
   padding: 2em;
 }
 
-.read-the-docs {
-  color: #888;
+.react-pdf__Page {
+  display: block;
+  position: static;
+  margin: 0;
+}
+.react-pdf__Page__canvas {
+  display: block;
+  position: static;
+}
+.react-pdf__Page__textContent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: none;
 }
