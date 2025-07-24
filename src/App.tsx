@@ -77,13 +77,15 @@ function Home() {
   >
     <h1 className='subtitle'>About Me</h1>
     <img src={headshot} alt='Headshot' width='300px' height='300px'></img>
-    <TypewriterText 
-      text = 
-        {`Hi, my name is Nikolas Varga. I'm studying electrical engineering and music technology at Northeastern University.
-        I recently completed two co-ops studying memory and audiovisual perception at the Garner Lab and developing organic photovoltaic technologies at Nano-C, Inc. 
-        My personal and professional interests include advancing consumer audio, digital signal processing, climatetech, and music technology.`}
-      speed = {10}
-    />
+    <p>
+      <TypewriterText 
+        text = 
+          {`Hi, my name is Nikolas Varga. I'm studying electrical engineering and music technology at Northeastern University.
+          I recently completed two co-ops studying memory and audiovisual perception at the Garner Lab and developing organic photovoltaic technologies at Nano-C, Inc. 
+          My personal and professional interests include advancing consumer audio, digital signal processing, climatetech, and music technology.`}
+        speed = {10}
+      />
+    </p>
   </motion.div>
     );
 }
