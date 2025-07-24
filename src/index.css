@@ -8,13 +8,46 @@
   color: rgba(255, 255, 255, 0.87);
   background-color: #221a19;
 
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --color-1: #231b1a;
+  --color-2: #4a3d3a;
+  --color-3: #7d6b5e;
+  --color-4: #b2a899;
+  --color-5: #e2d2cb;
+  --color-6: #f8f4f2;
+  --color-hover: #d1ad79;
+
+  --default-shadow: 0px 3px 6px #221a1981;
+
 }
 
+.color-1 {
+  color: #231b1a;
+}
+.color-2 {
+  color: #4a3d3a;
+}
+.color-3 {
+  color: #7d6b5e;
+}
+.color-4 {
+  color: #b2a899;
+}
+.color-5 {
+  color: #e2d2cb;
+}
 
+.color-6 {
+  color: #f8f4f2;
+}
+
+.color-hover {
+  color: #d1ad79;
+}
 
 .tomorrow-regular {
   font-family: "Tomorrow", sans-serif;
@@ -102,18 +135,39 @@ button:focus-visible {
 .arrow-button {
   background: none;
   color: black;
+  box-shadow: 0px 3px 6px #221a1981;
   transition: color 0.25s;
   border: none;
-  margin: 0;
+  margin: 0px 0.25rem;
   padding: 0;
 }
 
 .arrow-button:hover {
-  color: aquamarine;
+  color: var(--color-hover);
 }
 
 .arrow-button:disabled {
   color: rgba(0, 0, 0, 0.5);
+}
+
+/* Section for PDFViewer */
+
+.page-flip-container {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.page-flip-content {
+  transition: transform 0.3s ease-in-out;
+  transform-origin: center;
+}
+
+.page-flip-content.flipping {
+  transform: rotateY(90deg);
+}
+
+.page-flip-content.flip-back {
+  transform: rotateY(90deg);
 }
 
 @media (prefers-color-scheme: light) {
