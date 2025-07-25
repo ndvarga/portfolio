@@ -1,13 +1,15 @@
-import { HashRouter as Router, Routes, Route, Link} from 'react-router-dom'
+import { HashRouter as Router, Routes, Route, NavLink, useLocation} from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react' 
 import { motion, useMotionValue, useTransform, animate } from 'framer-motion'
 import CustomPdfViewer from './PDFViewer.tsx'
 import './App.css'
-import headshot from './assets/headshot.jpeg';
+import headshot from './assets/headshot.jpeg'
+import signUnderConstruction from './assets/HeHeartlandLane5025imagesconstruction.gif'
+import guyUnderConstruction from './assets/CaCapeCanaveral8167brunounderconstruction.gif'
+import barUnderConstruction from './assets/ArArea51Shadowlands5031Under-Construction.gif'
 
-//TODO: implement a typing animation for text
 /** 
- * Returns the text as a progressively typed version, with a cursor.
+ * Returns {text} as a progressively typed version, with a cursor.
  *
  *  speed: ms per letter 
 */
@@ -68,21 +70,81 @@ function TypewriterText({
   )
 }
 
+function AspectRatioImage({
+  src,
+  alt,
+  width,  
+}: {
+  src: string;
+  alt: string;
+  width: number;
+}) {
+  const [aspectRatio, setAspectRatio] = useState<number | null>(null);
+
+  const handleLoad = (event: React.SyntheticEvent<HTMLImageElement>) => {
+    const img = event.currentTarget;
+    setAspectRatio(img.naturalWidth / img.naturalHeight);
+  };
+  return (
+    <img
+      src={src}
+      alt={alt}
+      onLoad={handleLoad}
+      style={{
+        width:`${width}px`,
+        height: aspectRatio ? `${width/aspectRatio}px` : 'auto',
+      }}
+    /> 
+  );
+}
+
 function Home() {
+
   return (
   <motion.div
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     transition={{ duration: 1 }}
   >
+    <span style={{
+      display: 'flex',
+      margin: '2rem 0'
+      }}
+    >
+
+      
+      <AspectRatioImage 
+        src={barUnderConstruction} 
+        alt='Under construction long sign'
+        width={400}
+      />
+      <AspectRatioImage
+      src={signUnderConstruction}
+      alt='spinning under construction sign'
+      width={200}
+      />  
+      
+
+      <AspectRatioImage 
+        src={barUnderConstruction} 
+        alt='Under construction long sign'
+        width={400}
+      />
+    </span>
+    <AspectRatioImage 
+      src={guyUnderConstruction}
+      alt='GIF of man cutting wood'
+      width={150}
+    />
     <h1 className='subtitle'>About Me</h1>
     <img src={headshot} alt='Headshot' width='300px' height='300px'></img>
     <p>
       <TypewriterText 
         text = 
-          {`Hi, my name is Nikolas Varga. I'm studying electrical engineering and music technology at Northeastern University.
+          {`Hi, my name is Nikolas Varga. I am a fifth year student studying electrical engineering and music technology at Northeastern University.
           I recently completed two co-ops studying memory and audiovisual perception at the Garner Lab and developing organic photovoltaic technologies at Nano-C, Inc. 
-          My personal and professional interests include advancing consumer audio, digital signal processing, climatetech, and music technology.`}
+          My personal and professional interests include advancing consumer audio, digital signal processing, climatetech, and music technology.
+          `}
         speed = {10}
       />
     </p>
@@ -140,15 +202,19 @@ function Passions() {
     </div>
 }
 
-function App() {
+function AppContent() {
   const [menuX, setMenuX] = useState(0);
   const [menuY, setMenuY] = useState(0);
   const [sidebarOpen, setSidebarOpen] = useState(false); 
   const lastSize = useRef({ width: window.innerWidth, height: innerHeight });
-
+  
   let timeout: number | undefined;
 
+  const location = useLocation();
+  console.log('Location pathname:', location.pathname);
+  console.log('Location hash:', location.hash);
   
+
   function handleResize() {
     //bounces the menu depending on the change in browser size
     const { width, height } = lastSize.current;
@@ -176,10 +242,12 @@ function App() {
   }, []);
 
   return (
-    <Router>
+    <>
+    {/** The header bar */}
       <header>
         <div className='header-bar'>
           <h1 className='main-title'>Nikolas Varga</h1>
+          {/** Toggle button that appears under a certain width */}
           <button
             className="menu-toggle"
             onClick={() => setSidebarOpen((open) => !open)}
@@ -193,10 +261,45 @@ function App() {
             transition={{ type:'spring', stiffness: 100, damping: 12}}
           >
           
-            <Link to='/' onClick={() => setSidebarOpen(false)}>home</Link>
-            <Link to='/projects' onClick={() => setSidebarOpen(false)}>projects</Link>
-            <Link to='/writing' onClick={() => setSidebarOpen(false)}>writing</Link>
-            <Link to='/passions' onClick={() => setSidebarOpen(false)}>passions</Link>
+            {/** home page */}
+            <NavLink 
+              to='/' 
+              end
+              onClick={() => setSidebarOpen(false)}
+              className={ ({ isActive }) => isActive ? 'active-link' : ''}
+            >
+              home
+            </NavLink>
+
+            {/** projects page link*/}
+            <NavLink 
+              to='/projects' 
+              end
+              onClick={() => setSidebarOpen(false)}
+              className={ ({ isActive }) => isActive ? 'active-link' : ''}
+            >
+              projects
+            </NavLink>
+
+            {/** writing page link*/}
+            <NavLink 
+              to='/writing' 
+              end
+              onClick={() => setSidebarOpen(false)}
+              className={ ({isActive }) => isActive ? 'active-link' : ''}
+            >
+              writing
+            </NavLink>
+
+            {/** passions page link*/}
+            <NavLink 
+              to='/passions' 
+              end
+              onClick={() => setSidebarOpen(false)}
+              className={ ({isActive }) => isActive ? 'active-link' : ''}
+            >
+              passions
+            </NavLink>
           </motion.nav>
         </div>
       </header>
@@ -206,8 +309,16 @@ function App() {
         <Route path='/writing' element={<Writing />} />
         <Route path='/passions' element={<Passions />} />
       </Routes>
-    </Router>
+    </>
   )
+}
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
+    </Router>
+  );
 }
 
 export default App

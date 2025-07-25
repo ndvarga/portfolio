@@ -110,7 +110,7 @@ export default function CustomPdfViewer({ file, onLoadComplete }: customPdfViewe
                     </button>
                     
                     <span style={{ fontSize: '1rem', fontWeight: 'bold' }}>
-                        Page {pageNumber} of {numPages}
+                         {pageNumber} / {numPages}
                     </span>
                     
                     <button
