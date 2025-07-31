@@ -104,14 +104,11 @@ p {
   margin: 2rem 2rem;
   text-align: justify;
 }
-.subtitle {
-  text-align: center;
-  font-size: 2.4em;
-}
+
 
 img {
   display: block;
-  margin: 0 auto;
+  margin: 1rem auto;
 }
 
 button {

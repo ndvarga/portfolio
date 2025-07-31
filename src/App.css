@@ -39,6 +39,34 @@ body {
   padding: 0;
 }
 
+.subtitle {
+  text-align: center;
+  font-size: 2.4em;
+}
+
+.project-title {
+  text-align: center;
+  margin: auto 2rem; 
+  font-size: 1.5rem;
+}
+
+.project-text {
+  margin: 1rem auto 0; 
+  max-width: 400px; 
+  cursor: pointer;
+}
+
+.circular-picture {
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--color-3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.circular-picture:hover {
+  transform: scale(1.05);
+}
+
 /* Nav bar styling */
 .top-menu {
   display: flex;
@@ -58,7 +86,7 @@ body {
 .top-menu a::after {
   content: '';
   position: absolute;
-  bottom: -4px;
+  bottom: -2px;
   left: 0;
   width: 100%;
   height: 2px;
@@ -72,11 +100,17 @@ body {
 .top-menu a:hover::after {
   transform: scaleX(1);
   background-color: var(--color-1);
+  height: 2px;
 }
 
 
 .top-menu:hover a.active-link:not(:hover)::after {
   transform: scaleX(0);
+  height: 2px;
+}
+
+.top-menu:hover a.active-link:hover::after {
+  background-color: var(--color-1);
 }
 
 .top-menu a:hover {
@@ -85,19 +119,21 @@ body {
 
 /* Styling for current location on site*/
 
-.top-menu a.active-link::before,
-
 .top-menu a.active-link::after {
   transform: scaleX(1);
   transform-origin: 0;
+  height: 2px;
   background-color: #fff;
 }
 
 
 
 .page-title {
-  text-align: center;
-
+  text-align: left;
+  font-family: "Bitcount Grid Double";
+  font-size: 4rem;
+  font-weight: 300;
+  margin: 2rem 2rem;
 }
 
 .menu-toggle {
