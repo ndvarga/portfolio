@@ -28,8 +28,9 @@ export default function VmrlModel({
     <Canvas 
       camera={{ position: [0, 0, 5] }}
       fallback={<div>WebGL not supported!</div>}
+      performance={{ min: 0.1 }}
     >
-      <ambientLight intensity={1} />
+      <ambientLight intensity={2} />
       <spotLight position={[10, 10, 10]} angle={Math.PI/3} penumbra={0} intensity={100}/>
       <pointLight position={[-10, -10, -10]} />
       
