@@ -19,41 +19,51 @@ export default function TimelineEvent({
   return (
     <div className='timeline-item' style={{
         maxHeight: '120px',
-        maxWidth: '280px'
+        maxWidth: '320px',
+        padding: '1rem'
       }}
     >
       <div style={{
-        color: 'var(--color-3)',
-        fontWeight: 'bold',
-        fontSize: '0.9rem',
-        marginBottom: '0.5rem'
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: '0.25rem'
       }}>
-        {startYear}
-        {endYear && ` - ${endYear}`}
-        {isOngoing && ' - Present'}
+        <div style={{
+          color: 'var(--color-3)',
+          fontWeight: 'bold',
+          fontSize: '0.8rem'
+        }}>
+          {startYear}
+          {endYear && ` - ${endYear}`}
+          {isOngoing && ' - Present'}
+        </div>
+        {location && (
+          <small style={{ 
+            color: 'var(--color-3)',
+            fontSize: '0.8rem',
+            margin: '0'
+          }}>
+            📍 {location}
+          </small>
+        )}
       </div>
       <h3 style={{ 
-        margin: '0 0 0.5rem 0', 
+        margin: '0 0 0.25rem 0', 
         color: 'var(--color-2)',
-        fontSize: '1.2rem'
+        fontSize: '1rem',
+        lineHeight: '1.2'
       }}>
         {title}
       </h3>
       <p style={{ 
-        margin: '0 0 0.5rem 0',
-        lineHeight: '1.4',
-        color: 'black'
+        margin: '0 0 0.25rem 0',
+        lineHeight: '1.3',
+        color: 'black',
+        fontSize: '0.9rem'
       }}>
         {description}
       </p>
-      {location && (
-        <small style={{ 
-          color: 'var(--color-3)',
-          fontSize: '0.85rem'
-        }}>
-          📍 {location}
-        </small>
-      )}
     </div>
   )
 }

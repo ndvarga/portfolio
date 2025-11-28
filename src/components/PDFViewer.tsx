@@ -17,6 +17,8 @@ export default function CustomPdfViewer({ file, onLoadComplete }: customPdfViewe
     const [scale, setScale] = useState(1.0);
     const [isFullscreen, setIsFullscreen] = useState(false);
     const [isFlipping, setIsFlipping] = useState(false);
+    const [backButtonPressed, setBackButtonPressed] = useState(false);
+    const [forwardButtonPressed, setForwardButtonPressed] = useState(false);
 
     const minScale = 0.5;
     const maxScale = 3.0;
@@ -33,11 +35,25 @@ export default function CustomPdfViewer({ file, onLoadComplete }: customPdfViewe
     const handlePageChange = (newPageNumber: number) => {
         if (newPageNumber === pageNumber) return;
 
+        // Set button pressed state
+        if (newPageNumber < pageNumber) {
+            setBackButtonPressed(true);
+        } else {
+            setForwardButtonPressed(true);
+        }
+
         setIsFlipping(true);
 
         setTimeout(() => {
             setPageNumber(newPageNumber);
-            setTimeout(() => setIsFlipping(false), 50);
+            setTimeout(() => {
+                setIsFlipping(false);
+                // Reset button states after transition
+                setTimeout(() => {
+                    setBackButtonPressed(false);
+                    setForwardButtonPressed(false);
+                }, 1000); // Keep green for 1 second
+            }, 50);
         }, 400);
     };
 
@@ -100,10 +116,9 @@ export default function CustomPdfViewer({ file, onLoadComplete }: customPdfViewe
                         onClick={() => handlePageChange(Math.max(pageNumber - 1, 1))}
                         disabled={pageNumber <= 1 || isFlipping}
                         style={{
-                            padding: '0.5rem 1rem',
-                            border: '1px solid #ccc',
-                            background: pageNumber <= 1 ? '#f5f5f5' : 'none',
-                            cursor: pageNumber <= 1 || isFlipping ? 'not-allowed' : 'pointer', 
+                            border: `1px solid ${backButtonPressed ? '#4caf50' : '#ccc'}`,
+                            background: pageNumber <= 1 ? '#f5f5f5' : (backButtonPressed ? '#e8f5e8' : '#fff'),
+                            cursor: pageNumber <= 1 || isFlipping ? 'not-allowed' : 'pointer',
                         }}
                     >
                         &lt;
@@ -118,8 +133,8 @@ export default function CustomPdfViewer({ file, onLoadComplete }: customPdfViewe
                         onClick={() => handlePageChange(Math.min(pageNumber + 1, numPages ?? 1))}
                         disabled={pageNumber >= (numPages ?? 1) || isFlipping}
                         style={{
-                            padding: '0.5rem 1rem',
-                            background: pageNumber >= (numPages ?? 1) ? '#f5f5f5' : '#fff',
+                            border: `1px solid ${forwardButtonPressed ? '#4caf50' : '#ccc'}`,
+                            background: pageNumber >= (numPages ?? 1) ? '#f5f5f5' : (forwardButtonPressed ? '#e8f5e8' : '#fff'),
                             cursor: pageNumber >= (numPages ?? 1) || isFlipping ? 'not-allowed' : 'pointer',
                         }}
                     >
