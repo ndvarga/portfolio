@@ -8,6 +8,8 @@ import InProgressBadge from '../components/InProgressBadge.tsx'
 import candlemakerTeam from '../assets/candlemaker_team.jpg'
 import tubenderTeam from '../assets/tubender_team.jpg'
 import piano_hand from '../assets/piano_hand.jpeg'
+import granspec_dist_reverb_snip from '../assets/granspec_dist_reverbsnip.png'
+import system_verilog from '../assets/system_verilog.png'
 import { useSequentialTypewriter } from '../utils.tsx'
 
 function Projects() {
@@ -91,7 +93,7 @@ function Projects() {
       name: 'Single Cycle RISC-V Processor',
       category: 'EECE2322',
       categoryColor: 'rgb(32, 178, 170)', // Light blue
-      image: null,
+      image: system_verilog,
       description: 'Single Cycle RISC-V Processor is a single cycle RISC-V processor designed to be a simple, efficient, and easy to understand processor. The project was developed to offer an inexpensive, all-in-one alternative to current solutions for home candlemaking.',
       route: '/projects/single-cycle-risc-v-processor',
       isInProgress: false,
@@ -104,7 +106,7 @@ function Projects() {
       name: 'granspec',
       category: 'MUST',
       categoryColor: 'rgb(32, 178, 170)', // Light blue
-      image: null,
+      image: granspec_dist_reverb_snip,
       description: 'granspec is a MaxMSP that applies time domain effects to spectrally decomposed audio signals.',
       route: '/projects/granspec',
       isInProgress: false,
@@ -118,9 +120,17 @@ function Projects() {
   const images = [
     candlemakerTeam, 
     tubenderTeam,
+    piano_hand,
+    granspec_dist_reverb_snip,
+    system_verilog,
   ];
   const navigate = useNavigate();
   const delays = useSequentialTypewriter(texts, 50, 0);
+  const imageNavigationDelay = 600;
+
+  const navigateWithDelay = (route: string) => {
+    window.setTimeout(() => navigate(route), imageNavigationDelay);
+  };
 
   // Helper function to convert projects to timeline events
   // This can be used to display projects on the timeline in Home.tsx
@@ -165,19 +175,32 @@ function Projects() {
               display: 'flex',
               flexDirection: 'column',
             }}>
-              <SpinningShadowImage
-                src={project.image || ''}
-                alt={`Photo of ${project.name} Team`}
-                width={pictureWidth}
-                height={187.5}
-                radius={20}
-                initialAngle={30}
-                nSpins={index === 1 ? 3 : 1} // Tubender gets 3 spins
-                style={{
-                  borderRadius: '20%',
-                  transition: 'box-shadow 0.3s ease'
-                }}
-              />
+              {project.image ? (
+                <SpinningShadowImage
+                  src={project.image}
+                  alt={`Photo of ${project.name} Team`}
+                  width={pictureWidth}
+                  height={187.5}
+                  radius={20}
+                  initialAngle={30}
+                  nSpins={index === 1 ? 3 : 1} // Tubender gets 3 spins
+                  style={{
+                    borderRadius: '20%',
+                    transition: 'box-shadow 0.3s ease'
+                  }}
+                  onClick={() => navigateWithDelay(project.route)}
+                />
+              ) : (
+                <div
+                  style={{
+                    width: pictureWidth,
+                    height: 200,
+                    borderRadius: '20%',
+                    background: 'transparent',
+                    marginBottom: '1rem',
+                  }}
+                />
+              )}
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
                 <ProjectLabel 
                   category={project.category}
@@ -189,7 +212,7 @@ function Projects() {
               </div>
               <button
                 type='button'
-                className='project-title project-title-link'
+                className='project-title'
                 onClick={() => navigate(project.route)}
                 style={{
                   display: 'flex',
@@ -199,10 +222,9 @@ function Projects() {
                   background: 'transparent',
                   padding: 0,
                   textAlign: 'left',
-                  cursor: 'pointer',
                 }}
               >
-                <TypewriterText text={project.name} delay={delays[index + 1]} speed={1} />
+                <TypewriterText text={project.name} delay={delays[index + 1]} speed={1} className='project-title-link' />
               </button>
               <p 
                 className='project-text'

@@ -8,11 +8,13 @@ import { useState, useEffect } from 'react';
 export default function TypewriterText({
   text,
   delay = 0,
-  speed = 50
+  speed = 50,
+  className = ''
 }: {
   text: string;
   delay?: number;
   speed?: number;
+  className?: string;
 }) {
   const [isComplete, setIsComplete] = useState(false);
   const count = useMotionValue(0);
@@ -43,7 +45,7 @@ export default function TypewriterText({
 
   return (
     
-    <span>
+    <span className={className}>
       {/** Motion enabled text */}
       <motion.span>{displayText}</motion.span>
       
