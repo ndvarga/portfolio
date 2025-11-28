@@ -89,19 +89,20 @@ function Home() {
             width:'200px', 
             height:'200px',
             cursor: 'pointer',
+            marginLeft: '2rem',
           }}
           
         />
         {/* Self-introduction */}
         {/* TODO: Add links to github, LinkedIn, and email */ }
         
-        <h1 className='subtitle'>About Me</h1>
+        <h1 className='subtitle' style={{ textAlign: 'left', margin: '2rem 2rem 1rem' }}>About Me</h1>
         
         <div style={{
           display: 'flex',
           flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'center',
+          marginLeft: '2rem',
+          justifyContent: 'left',
           gap: '2rem'
         }}>
           <a href='https://github.com/ndvarga' target='_blank' rel='noopener noreferrer'>
@@ -112,7 +113,9 @@ function Home() {
           </a>
         </div>
         <p style={{
-          margin: 'auto 20vw'
+          margin: '0 2rem 2rem',
+          textAlign: 'left',
+          maxWidth: '800px'
         }}>
           <TypewriterText 
             text = 
@@ -123,9 +126,9 @@ function Home() {
             speed = {5}
           />
         </p>
-        <h2 className='subtitle'>Resume</h2>
-        <CustomPdfViewer file='/portfolio/VargaResumeOct2025.pdf' />
-        <h2 className='subtitle'>Timeline</h2>
+        <h2 className='subtitle' style={{ textAlign: 'left', margin: '1rem 2rem' }}>Resume</h2>
+        <CustomPdfViewer file='/portfolio/VargaResumeNov28_2025.pdf' />
+        <h2 className='subtitle' style={{ textAlign: 'left', margin: '2rem 2rem 1rem' }}>Timeline</h2>
         <Timeline>
           <TimelineEvent startYear={2025} title='Candlemaker Engineer' description='Foo' />
           <TimelineEvent startYear={2024} title='Tubender Engineer' description='Foo' />

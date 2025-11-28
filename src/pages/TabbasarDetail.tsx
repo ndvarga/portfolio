@@ -10,7 +10,7 @@ function TabbasarDetail() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <h1 className='page-title'>
+        <h1 className='project-page-title'>
           <TypewriterText text='tabbasar' />
         </h1>
       </motion.div>

@@ -7,7 +7,7 @@ import Projects from './pages/Projects.tsx'
 import CandlemakerDetail from './pages/CandlemakerDetail.tsx'
 import TubenderDetail from './pages/TubenderDetail.tsx'
 import GianoDetail from './pages/GianoDetail.tsx'
-import MusicAugmenterDetail from './pages/NoiseMakerDetail.tsx'
+import NoisemakerDetail from './pages/NoiseMakerDetail.tsx'
 import TabbasarDetail from './pages/TabbasarDetail.tsx'
 import Writing from './pages/Writing.tsx'
 import Passions from './pages/Passions.tsx'
@@ -119,7 +119,7 @@ function AppContent() {
         <Route path='/projects/candlemaker' element={<CandlemakerDetail />} />
         <Route path='/projects/tubender' element={<TubenderDetail />} />
         <Route path='/projects/giano' element={<GianoDetail />} />
-        <Route path='/projects/music-augmenter' element={<MusicAugmenterDetail />} />
+        <Route path='/projects/noisemaker' element={<NoisemakerDetail />} />
         <Route path='/projects/tabbasar' element={<TabbasarDetail />} />
         <Route path='/writing' element={<Writing />} />
         <Route path='/passions' element={<Passions />} />
