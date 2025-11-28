@@ -11,6 +11,7 @@ import NoisemakerDetail from './pages/NoisemakerDetail.tsx'
 import TabbasarDetail from './pages/TabbasarDetail.tsx'
 import Writing from './pages/Writing.tsx'
 import Passions from './pages/Passions.tsx'
+import GranspecDetail from './pages/GranspecDetail.tsx'
 
 function AppContent() {
   const [menuX, setMenuX] = useState(0);
@@ -121,6 +122,7 @@ function AppContent() {
         <Route path='/projects/giano' element={<GianoDetail />} />
         <Route path='/projects/noisemaker' element={<NoisemakerDetail />} />
         <Route path='/projects/tabbasar' element={<TabbasarDetail />} />
+        <Route path='/projects/granspec' element={<GranspecDetail />} />
         <Route path='/writing' element={<Writing />} />
         <Route path='/passions' element={<Passions />} />
       </Routes>
