@@ -11,7 +11,6 @@ export default function ProjectLabel({
   category, 
   color = '#8B4513', // Default brown color
   delay = 0,
-  width = 'auto'
 }: ProjectLabelProps) {
   return (
     <motion.div

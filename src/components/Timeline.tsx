@@ -239,8 +239,7 @@ export default function Timeline({ children }: TimelineProps) {
                   width: '3px',
                   background: `linear-gradient(to bottom, var(--color-3), var(--color-4))`,
                   left: `${horizontalOffset}px`,
-                  top: `${-duration * 100}px`,
-                  // transform: 'translateY(1rem)',
+                  top: `${-((duration / (maxYear - minYear)) * containerHeight)}px`,
                   borderRadius: '2px',
                   zIndex: 5
                 }}

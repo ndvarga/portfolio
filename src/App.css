@@ -39,6 +39,16 @@ body {
   padding: 0;
 }
 
+.full-width-text {
+  width: calc(100vw - 4rem); /* Full width minus 2rem on each side */
+  margin: 0 2rem;
+  text-align: justify;
+  text-justify: inter-word;
+  word-spacing: 0.9em; /* Increase space between words */
+  hyphens: auto;
+  /* letter-spacing: 0.1em; Slight letter spacing */
+}
+
 .subtitle {
   text-align: center;
   font-size: 2.4em;
