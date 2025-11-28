@@ -4,7 +4,7 @@ import CustomPdfViewer from '../components/PDFViewer.tsx'
 import TypewriterText from '../components/TypewriterText.tsx'
 
 function Writing() {
-  // TODO: add resource essay, pedestrian scale study, acoustics paper, poems
+  // TODO: add pedestrian scale study, poems
   const [pdfLoaded, setPdfLoaded] = useState(false);
 
   const essays = [
