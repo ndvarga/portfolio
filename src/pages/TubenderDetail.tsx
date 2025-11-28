@@ -15,7 +15,7 @@ function TubenderDetail() {
         transition={{ delay: 2, duration: 0.8, ease: "easeOut" }}
         onAnimationComplete={() => setAnimationComplete(true)}
       >
-        <h1 className='main-title'>
+        <h1 className='project-page-title'>
           <TypewriterText text='Tubender' />
         </h1>
       </motion.div>

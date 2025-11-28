@@ -14,9 +14,15 @@ function GianoDetail() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <h1 className='page-title'>
+        <h1 className='project-page-title'>
           <TypewriterText text='Giano' />
         </h1>
+        <h2 className='subtitle'>About</h2>
+        <p style={{ marginBottom: '2rem', lineHeight: '1.6' }}>
+          Giano is a comprehensive system for piano learning using computer vision, haptic feedback gloves, and audio synthesis. 
+          Created as a capstone design project at Northeastern University, Giano combines hand tracking technology with haptic 
+          feedback to guide users through piano playing in real-time.
+        </p>
       </motion.div>
       <ImageCarousel
             images={[
@@ -33,12 +39,7 @@ function GianoDetail() {
           />
       <PDFViewer file='giano_report.pdf' />
       <div style={{ margin: '2rem 0' }}>
-        <h2 className='subtitle'>About</h2>
-        <p style={{ marginBottom: '2rem', lineHeight: '1.6' }}>
-          Giano is a comprehensive system for piano learning using computer vision, haptic feedback gloves, and audio synthesis. 
-          Created as a capstone design project at Northeastern University, Giano combines hand tracking technology with haptic 
-          feedback to guide users through piano playing in real-time.
-        </p>
+        
 
         <h2 className='subtitle'>System Components</h2>
         <div style={{ marginBottom: '2rem' }}>

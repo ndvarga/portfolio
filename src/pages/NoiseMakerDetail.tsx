@@ -9,15 +9,15 @@ function NoisemakerDetail() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <h1 className='main-title'>
-          <TypewriterText text='Music Augmenter' />
+        <h1 className='project-page-title'>
+          <TypewriterText text='Noisemaker' />
         </h1>
       </motion.div>
       
       <div style={{ margin: '2rem 0' }}>
         <h2 className='subtitle'>About</h2>
         <p style={{ marginBottom: '2rem', lineHeight: '1.6' }}>
-          Music Augmenter is a MATLAB-based real-time audio augmentation system that applies various audio effects and 
+          Noisemaker is a MATLAB-based real-time audio augmentation system that applies various audio effects and 
           transformations to live audio streams. The system implements noise generation, resampling, delay effects, and 
           music information retrieval (MIR) analysis for brightness, novelty, and roughness features. 
           The project forms an interactive computer music system considering the philosophy of John Cage. 

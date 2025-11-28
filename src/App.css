@@ -147,6 +147,14 @@ body {
   margin: 2rem 2rem;
 }
 
+.project-page-title {
+  text-align: left;
+  font-family: "Space Grotesk";
+  font-size: 4rem;
+  font-weight: 500;
+  margin: 2rem 2rem;
+}
+
 .menu-toggle {
   display: none;
   background: none;
