@@ -3,8 +3,6 @@ import CustomPdfViewer from '../components/PDFViewer.tsx'
 import TypewriterText from '../components/TypewriterText.tsx'
 import SpinningShadowImage from '../components/SpinningShadowImage.tsx'
 import ImagePreloader from '../components/ImagePreloader.tsx'
-import Timeline from '../components/Timeline.tsx'
-import TimelineEvent from '../components/TimelineEvent.tsx'
 import headshot from '../assets/headshot.jpeg'
 import signUnderConstruction from '../assets/HeHeartlandLane5025imagesconstruction.gif'
 import guyUnderConstruction from '../assets/CaCapeCanaveral8167brunounderconstruction.gif'
@@ -126,9 +124,9 @@ function Home() {
             speed = {5}
           />
         </p>
-        {/* <h2 className='subtitle' style={{ textAlign: 'left', margin: '1rem 2rem' }}>Resume</h2>
+        <h2 className='subtitle' style={{ textAlign: 'left', margin: '1rem 2rem' }}>Resume</h2>
         <CustomPdfViewer file='/portfolio/VargaResumeNov28_2025.pdf' />
-        <h2 className='subtitle' style={{ textAlign: 'left', margin: '2rem 2rem 1rem' }}>Timeline</h2>
+        {/*<h2 className='subtitle' style={{ textAlign: 'left', margin: '2rem 2rem 1rem' }}>Timeline</h2>
         <Timeline>
           <TimelineEvent startYear={2025} title='Candlemaker Engineer' description='Foo' />
           <TimelineEvent startYear={2024} title='Tubender Engineer' description='Foo' />
