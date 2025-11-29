@@ -8,8 +8,8 @@ import InProgressBadge from '../components/InProgressBadge.tsx'
 import candlemakerTeam from '../assets/candlemaker_team.jpg'
 import tubenderTeam from '../assets/tubender_team.jpg'
 import piano_hand from '../assets/piano_hand.jpeg'
+import riscv_design from '../assets/riscv_design.png'
 import granspec_dist_reverb_snip from '../assets/granspec_dist_reverbsnip.png'
-import system_verilog from '../assets/system_verilog.png'
 import { useSequentialTypewriter } from '../utils.tsx'
 
 function Projects() {
@@ -81,7 +81,9 @@ function Projects() {
       category: 'Generate',
       categoryColor: '#8B4513', // Brown
       image: tubenderTeam,
-      description: 'Tubender is an automated EMT conduit tube bender designed to make common bends easier. The current process for bending EMT conduit involves precise manual bending using specific tools for different size tubes. Tubender was designed with the capability to do multiple bends in one length of tubing.',
+      description: 'Tubender is an automated EMT conduit tube bender designed to make common bends easier. \
+      The current process for bending EMT conduit involves precise manual bending using specific tools for different size tubes. \
+      Tubender was designed with the capability to do multiple bends in one length of tubing.',
       route: '/projects/tubender',
       isInProgress: false,
       timelineData: {
@@ -93,18 +95,20 @@ function Projects() {
       name: 'Single Cycle RISC-V Processor',
       category: 'EECE2322',
       categoryColor: 'rgb(32, 178, 170)', // Light blue
-      image: system_verilog,
-      description: 'Single Cycle RISC-V Processor is a single cycle RISC-V processor designed to be a simple, efficient, and easy to understand processor. The project was developed to offer an inexpensive, all-in-one alternative to current solutions for home candlemaking.',
+      image: riscv_design,
+      description: 'Single Cycle RISC-V Processor is written in SystemVerilog.  \
+      Written in systemverilog, the system implements common instructions like andi, addi, beqz, bnez, jal, jr, and ret.\
+      It includes PC logic, instruction decoding, an ALU, and data memory.',
       route: '/projects/single-cycle-risc-v-processor',
       isInProgress: false,
       timelineData: {
-        startYear: 2024,
+        startYear: 2025,
         isOngoing: false
       }
     },
     {
       name: 'granspec',
-      category: 'MUST',
+      category: 'MUST1220',
       categoryColor: 'rgb(32, 178, 170)', // Light blue
       image: granspec_dist_reverb_snip,
       description: 'granspec is a MaxMSP that applies time domain effects to spectrally decomposed audio signals.',
@@ -122,7 +126,7 @@ function Projects() {
     tubenderTeam,
     piano_hand,
     granspec_dist_reverb_snip,
-    system_verilog,
+    riscv_design,
   ];
   const navigate = useNavigate();
   const delays = useSequentialTypewriter(texts, 50, 0);
@@ -222,8 +226,10 @@ function Projects() {
                   background: 'transparent',
                   padding: 0,
                   textAlign: 'left',
+                  marginLeft: '0',
                 }}
               >
+                {/* project name and subpage link */}
                 <TypewriterText text={project.name} delay={delays[index + 1]} speed={1} className='project-title-link' />
               </button>
               <p 

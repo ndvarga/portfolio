@@ -126,7 +126,7 @@ function Home() {
             speed = {5}
           />
         </p>
-        <h2 className='subtitle' style={{ textAlign: 'left', margin: '1rem 2rem' }}>Resume</h2>
+        {/* <h2 className='subtitle' style={{ textAlign: 'left', margin: '1rem 2rem' }}>Resume</h2>
         <CustomPdfViewer file='/portfolio/VargaResumeNov28_2025.pdf' />
         <h2 className='subtitle' style={{ textAlign: 'left', margin: '2rem 2rem 1rem' }}>Timeline</h2>
         <Timeline>
@@ -137,8 +137,53 @@ function Home() {
           <TimelineEvent startYear={2022} isOngoing={true} title='Northeastern University' description='For the past four years, I have been a student at Northeastern University studying electrical engineering and music technology.' />
           <TimelineEvent startYear={2021} endYear={2022} title='Boston University' description='I started my college journey at Boston University, where I took computer engineering classes.' location='Boston, MA' />
           <TimelineEvent startYear={2021} title='East High School' description='Graduated high school!' />
-        </Timeline>
-        {/* <h2 className='subtitle' style={{ marginTop: '4rem' }}>Cool Things I like doing</h2> */}
+        </Timeline> */}
+        <h2 className='subtitle' style={{ marginTop: '4rem', marginLeft: '2rem', textAlign: 'left' }}>Cool Things I like doing</h2>
+        <div style={{ margin: '2rem 2rem' }}>
+          <iframe
+            title='SoundCloud Playlist'
+            width='100%'
+            height='300'
+            scrolling='no'
+            frameBorder='no'
+            allow='autoplay'
+            src='https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%3Aplaylists%3A1986892924%3Fsecret_token%3Ds-kbe8bcKnaxd&color=%23bbb7b1&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true'
+          />
+          <div
+            style={{
+              fontSize: 10,
+              color: '#cccccc',
+              lineBreak: 'anywhere',
+              wordBreak: 'normal',
+              overflow: 'hidden',
+              whiteSpace: 'nowrap',
+              textOverflow: 'ellipsis',
+              fontFamily:
+                'Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif',
+              fontWeight: 100,
+            }}
+          >
+            <a
+              href="https://soundcloud.com/nik_mmusic"
+              title="nik_"
+              target="_blank"
+              rel="noreferrer"
+              style={{ color: '#cccccc', textDecoration: 'none' }}
+            >
+              nik_
+            </a>{' '}
+            ·{' '}
+            <a
+              href="https://soundcloud.com/nik_mmusic/sets/case-study-hyperfreak/s-kbe8bcKnaxd"
+              title="case study hyperfreak"
+              target="_blank"
+              rel="noreferrer"
+              style={{ color: '#cccccc', textDecoration: 'none' }}
+            >
+              case study hyperfreak
+            </a>
+          </div>
+        </div>
       </motion.div>
     </ImagePreloader>  
   );

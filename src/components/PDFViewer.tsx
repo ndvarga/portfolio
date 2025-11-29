@@ -9,9 +9,11 @@ pdfjs.GlobalWorkerOptions.workerSrc = workerSrc;
 type customPdfViewerProps = {
     file: string | File;
     onLoadComplete?: () => void;
+    maxWidth?: string | number;
+    align?: 'left' | 'center' | 'right';
 };
 
-export default function CustomPdfViewer({ file, onLoadComplete }: customPdfViewerProps) {
+export default function CustomPdfViewer({ file, onLoadComplete, maxWidth = '80vw', align = 'center' }: customPdfViewerProps) {
     const [numPages, setNumPages] = useState<number | null>(null);
     const [pageNumber, setPageNumber] = useState(1);
     const [scale, setScale] = useState(1.0);
@@ -85,14 +87,19 @@ export default function CustomPdfViewer({ file, onLoadComplete }: customPdfViewe
         
     }, []);
 
+    const maxWidthValue = typeof maxWidth === 'number' ? `${maxWidth}px` : maxWidth;
+    const marginLeft = align === 'left' ? '2rem' : align === 'right' ? 'auto' : 'auto';
+    const marginRight = align === 'right' ? '2rem' : align === 'left' ? 'auto' : 'auto';
+
     return (
         <div 
             ref={pdfContainerRef}
             style={{
-                width: '80vw',
+                width: '100%',
+                maxWidth: maxWidthValue,
                 height: '100vh',
                 display: 'flex',
-                margin: '2rem auto',
+                margin: `2rem ${marginRight} 2rem ${marginLeft}`,
                 flexDirection: 'column',
                 color: 'black',
                 background: 'var(--color-5)',
