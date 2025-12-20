@@ -3,6 +3,7 @@ import CustomPdfViewer from '../components/PDFViewer.tsx'
 import TypewriterText from '../components/TypewriterText.tsx'
 import SpinningShadowImage from '../components/SpinningShadowImage.tsx'
 import ImagePreloader from '../components/ImagePreloader.tsx'
+import SimpleTimeline from '../components/SimpleTimeline.tsx'
 import headshot from '../assets/headshot.jpeg'
 import signUnderConstruction from '../assets/HeHeartlandLane5025imagesconstruction.gif'
 import guyUnderConstruction from '../assets/CaCapeCanaveral8167brunounderconstruction.gif'
@@ -21,21 +22,7 @@ function Home() {
     githubIcon,
     linkedinIcon,
   ];
-  // const timelineEvents = [
-  //   {
-  //     startYear: 2022,
-  //     isOngoing: true,
-  //     title: "Northeastern University",
-  //     description: "Fifth year student studying electrical engineering and music technology",
-  //     location: "Boston, MA"
-  //   },
-  //   {
-  //     startYear: 2024,
-  //     endYear: 2025,
-  //     title: 'Electrical and Audio Engineering Co-op',
-  //     description: 'Worked on experimental tools at Garner Lab, HMS'
-  //   }
-  // ];
+ 
   return (
     <ImagePreloader
       images={images}
@@ -117,25 +104,18 @@ function Home() {
         }}>
           <TypewriterText 
             text = 
-              {`Hi, my name is Nikolas Varga. I am a fifth year student studying electrical engineering and music technology at Northeastern University.
+              {`Hi, my name is Nikolas Varga. I just graduated from Northeastern University with a B.S. in electrical engineering combined with music technology at a 3.9 GPA.
               I recently completed two co-ops studying memory and audiovisual perception at the Garner Lab and developing organic photovoltaic technologies at Nano-C, Inc. 
-              My personal and professional interests include advancing consumer audio, digital signal processing, climatetech, and music technology.
+              I am interested in making music technology more cost-accessible and socially aware and studying the intersection of music and engineering. I produce music under the alias nik_, and sometimes DJ :). 
+              My other passions include public transit, biking, and taking care of my plants.
               `}
             speed = {5}
           />
         </p>
         <h2 className='subtitle' style={{ textAlign: 'left', margin: '1rem 2rem' }}>Resume</h2>
         <CustomPdfViewer file='/portfolio/VargaResumeNov28_2025.pdf' />
-        {/*<h2 className='subtitle' style={{ textAlign: 'left', margin: '2rem 2rem 1rem' }}>Timeline</h2>
-        <Timeline>
-          <TimelineEvent startYear={2025} title='Candlemaker Engineer' description='Foo' />
-          <TimelineEvent startYear={2024} title='Tubender Engineer' description='Foo' />
-          <TimelineEvent startYear={2024} title='Electrical & Audio Engineering Co-op' description='Working at the Garner Lab at HMS' location='Boston'/>
-          <TimelineEvent startYear={2023} title='R&D Co-op' description='Developed organic photo- voltaic device inks and coatings at Nano-C, Inc.' />
-          <TimelineEvent startYear={2022} isOngoing={true} title='Northeastern University' description='For the past four years, I have been a student at Northeastern University studying electrical engineering and music technology.' />
-          <TimelineEvent startYear={2021} endYear={2022} title='Boston University' description='I started my college journey at Boston University, where I took computer engineering classes.' location='Boston, MA' />
-          <TimelineEvent startYear={2021} title='East High School' description='Graduated high school!' />
-        </Timeline> */}
+        <h2 className='subtitle' style={{ textAlign: 'left', margin: '2rem 2rem 1rem' }}>Timeline</h2>
+        <SimpleTimeline showProjects={true} showCoops={true} showEducation={true} />
         <h2 className='subtitle' style={{ marginTop: '4rem', marginLeft: '2rem', textAlign: 'left' }}>Cool Things I like doing</h2>
         <div style={{ margin: '2rem 2rem' }}>
           <iframe

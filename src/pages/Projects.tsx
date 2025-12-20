@@ -5,11 +5,7 @@ import SpinningShadowImage from '../components/SpinningShadowImage.tsx'
 import ImagePreloader from '../components/ImagePreloader.tsx'
 import ProjectLabel from '../components/ProjectLabel.tsx'
 import InProgressBadge from '../components/InProgressBadge.tsx'
-import candlemakerTeam from '../assets/candlemaker_team.jpg'
-import tubenderTeam from '../assets/tubender_team.jpg'
-import piano_hand from '../assets/piano_hand.jpeg'
-import riscv_design from '../assets/riscv_design.png'
-import granspec_dist_reverb_snip from '../assets/granspec_dist_reverbsnip.png'
+import { projects } from '../data/projects.ts'
 import { useSequentialTypewriter } from '../utils.tsx'
 
 function Projects() {
@@ -19,7 +15,7 @@ function Projects() {
     'Candlemaker',
     'Tubender', 
     'Giano',
-    'Noisemaker',
+    'The Augmenter',
     'tabbasar',
     'Single Cycle RISC-V Processor',
     'granspec'    
@@ -27,107 +23,12 @@ function Projects() {
 
   const pictureWidth = 250;
   
-  const projects = [
-    {
-      name: 'Giano',
-      category: 'Capstone Design Project',
-      categoryColor: 'rgb(178, 32, 163)', // Light blue
-      image: piano_hand,
-      description: 'A comprehensive system for piano learning using computer vision, haptic feedback gloves, and audio synthesis. Combines hand tracking technology with haptic feedback to guide users through piano playing in real-time.',
-      route: '/projects/giano',
-      isInProgress: true,
-      timelineData: {
-        startYear: 2025,
-        isOngoing: true
-      }
-    },
-    {
-      name: 'Noisemaker',
-      category: 'MUST5510',
-      categoryColor: 'rgb(32, 178, 170)', // Light blue
-      image: null,
-      description: 'A MATLAB-based real-time audio augmentation system that applies various audio effects and transformations to live audio streams, including noise generation, resampling, and delay effects.',
-      route: '/projects/noisemaker',
-      isInProgress: true,
-      timelineData: {
-        startYear: 2025,
-        isOngoing: true
-      }
-    },
-    {
-      name: 'tabbasar',
-      category: 'MUST3603',
-      categoryColor: 'rgb(32, 178, 170)', // Light blue
-      image: null,
-      description: 'tabbasar is a realtime digital wavetable synthesizer and sequencer designed to explore how digital audio synthesis can be implemented in a live environment.',
-      route: '/projects/tabbasar',
-      isInProgress: true,
-    },
-    {
-      name: 'Candlemaker',
-      category: 'Generate',
-      categoryColor: '#8B4513', // Brown
-      image: candlemakerTeam,
-      description: 'Candlemaker is a fully automated tabletop device for candle enthusiasts who want to make their own candles. The project was developed to offer an inexpensive, all-in-one alternative to current solutions for home candlemaking.',
-      route: '/projects/candlemaker',
-      isInProgress: false,
-      timelineData: {
-        startYear: 2025,
-        isOngoing: false
-      }
-    },
-    {
-      name: 'Tubender',
-      category: 'Generate',
-      categoryColor: '#8B4513', // Brown
-      image: tubenderTeam,
-      description: 'Tubender is an automated EMT conduit tube bender designed to make common bends easier. \
-      The current process for bending EMT conduit involves precise manual bending using specific tools for different size tubes. \
-      Tubender was designed with the capability to do multiple bends in one length of tubing.',
-      route: '/projects/tubender',
-      isInProgress: false,
-      timelineData: {
-        startYear: 2025,
-        isOngoing: false
-      }
-    },
-    {
-      name: 'Single Cycle RISC-V Processor',
-      category: 'EECE2322',
-      categoryColor: 'rgb(32, 178, 170)', // Light blue
-      image: riscv_design,
-      description: 'Single Cycle RISC-V Processor is written in SystemVerilog.  \
-      Written in systemverilog, the system implements common instructions like andi, addi, beqz, bnez, jal, jr, and ret.\
-      It includes PC logic, instruction decoding, an ALU, and data memory.',
-      route: '/projects/single-cycle-risc-v-processor',
-      isInProgress: false,
-      timelineData: {
-        startYear: 2025,
-        isOngoing: false
-      }
-    },
-    {
-      name: 'granspec',
-      category: 'MUST1220',
-      categoryColor: 'rgb(32, 178, 170)', // Light blue
-      image: granspec_dist_reverb_snip,
-      description: 'granspec is a MaxMSP that applies time domain effects to spectrally decomposed audio signals.',
-      route: '/projects/granspec',
-      isInProgress: false,
-      timelineData: {
-        startYear: 2024,
-        isOngoing: false
-      }
-    }
-  ];
+  // Filter out co-ops from the projects display (they'll show in timeline)
+  const displayProjects = projects.filter(p => p.category !== 'Co-op');
   
-  const images = [
-    candlemakerTeam, 
-    tubenderTeam,
-    piano_hand,
-    granspec_dist_reverb_snip,
-    riscv_design,
-  ];
+  const images = displayProjects
+    .filter(p => p.image !== null)
+    .map(p => p.image as string);
   const navigate = useNavigate();
   const delays = useSequentialTypewriter(texts, 50, 0);
   const imageNavigationDelay = 600;
@@ -168,7 +69,7 @@ function Projects() {
           marginBottom: '2rem'
         }}
         >
-          {projects.map((project, index) => (
+          {displayProjects.map((project, index) => (
             <div key={project.name} style={{
               marginLeft: '1rem',
               marginRight: '1rem',
@@ -192,7 +93,7 @@ function Projects() {
                     borderRadius: '20%',
                     transition: 'box-shadow 0.3s ease'
                   }}
-                  onClick={() => navigateWithDelay(project.route)}
+                  onClick={() => project.route && navigateWithDelay(project.route)}
                 />
               ) : (
                 <div
@@ -217,7 +118,7 @@ function Projects() {
               <button
                 type='button'
                 className='project-title'
-                onClick={() => navigate(project.route)}
+                onClick={() => project.route && navigate(project.route)}
                 style={{
                   display: 'flex',
                   alignItems: 'center',

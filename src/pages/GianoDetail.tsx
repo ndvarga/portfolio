@@ -4,6 +4,8 @@ import ImageCarousel from '../components/ImageCarousel.tsx'
 import gianoPcb from '../assets/giano_pcb.jpg'
 import piano_hand from '../assets/piano_hand.jpeg'
 import piano_mask from '../assets/piano_mask.jpeg'
+import cropped_and_cleaned from '../assets/cleaned_and_cropped.png'
+import example_mask from '../assets/example_mask_giano.png'
 import PDFViewer from '../components/PDFViewer.tsx'
 
 function GianoDetail() {
@@ -29,6 +31,8 @@ function GianoDetail() {
               { src: gianoPcb, alt: 'Giano PCB' },
               { src: piano_hand, alt: 'Piano hand tracking' },
               { src: piano_mask, alt: 'Piano mask detection' },
+              { src: cropped_and_cleaned, alt: 'Cropped and cleaned piano mask' },
+              { src: example_mask, alt: 'Final piano mask' },
             ]}
             width="100%"
             height={500}

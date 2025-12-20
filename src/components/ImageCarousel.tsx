@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface ImageCarouselProps {
@@ -26,25 +26,59 @@ export default function ImageCarousel({
   className = '',
 }: ImageCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoPlayPaused, setIsAutoPlayPaused] = useState(false);
+  const pauseTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  // Auto-play navigation (doesn't pause auto-play)
+  const autoPlayNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % images.length);
+  };
+
+  // Manual navigation (pauses auto-play)
   const goToNext = () => {
     setCurrentIndex((prev) => (prev + 1) % images.length);
+    pauseAutoPlay();
   };
 
   const goToPrevious = () => {
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+    pauseAutoPlay();
   };
 
   const goToSlide = (index: number) => {
     setCurrentIndex(index);
+    pauseAutoPlay();
   };
 
+  const pauseAutoPlay = () => {
+    // Clear any existing timeout
+    if (pauseTimeoutRef.current) {
+      clearTimeout(pauseTimeoutRef.current);
+    }
+    
+    setIsAutoPlayPaused(true);
+    // Resume auto-play after 10 seconds
+    pauseTimeoutRef.current = setTimeout(() => {
+      setIsAutoPlayPaused(false);
+      pauseTimeoutRef.current = null;
+    }, 10000);
+  };
+
+  // Cleanup timeout on unmount
   useEffect(() => {
-    if (autoPlay && images.length > 1) {
-      const interval = setInterval(goToNext, autoPlayInterval);
+    return () => {
+      if (pauseTimeoutRef.current) {
+        clearTimeout(pauseTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (autoPlay && images.length > 1 && !isAutoPlayPaused) {
+      const interval = setInterval(autoPlayNext, autoPlayInterval);
       return () => clearInterval(interval);
     }
-  }, [autoPlay, autoPlayInterval, images.length]);
+  }, [autoPlay, autoPlayInterval, images.length, isAutoPlayPaused]);
 
   if (images.length === 0) {
     return null;

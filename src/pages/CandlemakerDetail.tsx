@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, Suspense } from 'react'
 import { motion } from 'framer-motion'
 import VmrlModel from '../components/VmrlModel.tsx'
 import TypewriterText from '../components/TypewriterText.tsx'
@@ -21,39 +21,42 @@ function CandlemakerDetail() {
         </h1>
       </motion.div>
       <div style={{ height: '400px', width: '100%', margin: '2rem 0' }}>
-            {/* <Suspense fallback={
-              <div style={{
-                height: '400px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                background: 'var(--color-6)',
-                borderRadius: '8px',
-                color: 'black'
-              }}>
-                Loading 3D Model...
-              </div>
-            }> */}
-              {!modelLoaded && (
-                <div style={{
-                  height: '100%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  background: 'var(--color-6)',
-                  borderRadius: '8px'
-                }}>
-                Loading 3D Model...
-              </div>
-            )}
-            <VmrlModel 
-              url='src/assets/Candle_Main_PCB.wrl'
-              autoRotate={animationComplete} // Only autoRotate after animation is done
-              rotationSpeed={5}
-              objectRotation={[5*Math.PI/3, 0, Math.PI/4]}
-              onLoad={() => setModelLoaded(true)}
-            />
-          {/* </Suspense>  */}
+        <Suspense fallback={
+          <div style={{
+            height: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            background: 'var(--color-6)',
+            borderRadius: '8px',
+            color: 'var(--color-1)'
+          }}>
+            Loading 3D Model...
+          </div>
+        }>
+          {!modelLoaded && (
+            <div style={{
+              position: 'absolute',
+              height: '400px',
+              width: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: 'var(--color-1)',
+              borderRadius: '8px',
+              zIndex: 1
+            }}>
+              Loading 3D Model...
+            </div>
+          )}
+          <VmrlModel 
+            url='/portfolio/assets/models/Candle_Main_PCB.wrl'
+            autoRotate={animationComplete}
+            rotationSpeed={5}
+            objectRotation={[5*Math.PI/3, 0, Math.PI/4]}
+            onLoad={() => setModelLoaded(true)}
+          />
+        </Suspense>
       </div>
     </div>
   )
