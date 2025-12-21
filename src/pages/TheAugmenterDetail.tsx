@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import TypewriterText from '../components/TypewriterText.tsx'
 import PDFViewer from '../components/PDFViewer.tsx';
+import theAugmenterVideo from '../assets/theaugmenter/final_video.mp4';
 
 function TheAugmenterDetail() {
   return (
@@ -14,7 +15,8 @@ function TheAugmenterDetail() {
           <TypewriterText text='The Augmenter' />
         </h1>
       </motion.div>
-      
+      <h2 className='subtitle'>Demo Video</h2>
+      <video src={theAugmenterVideo} controls style={{ width: '80vw', height: 'auto', margin: '2rem auto', display: 'block' }} />
       <div style={{ margin: '2rem 0' }}>
         <h2 className='subtitle'>About</h2>
         <p style={{ marginBottom: '2rem', lineHeight: '1.6' }}>
@@ -28,7 +30,7 @@ function TheAugmenterDetail() {
         <p style={{ marginBottom: '2rem', lineHeight: '1.6' }}>
           <video src={theAugmenterVideo} alt='The Augmenter Video' />
         </p> */}
-        <PDFViewer file='portfolio/theaugmenter_finalreport.pdf' />
+        <PDFViewer file='/portfolio/theAugmenter_FinalReport.pdf' />
 
         <h2 className='subtitle'>Features</h2>
         <div style={{ marginBottom: '2rem' }}>
@@ -63,6 +65,10 @@ function TheAugmenterDetail() {
         <h2 className='subtitle'>Course</h2>
         <p style={{ marginBottom: '2rem', lineHeight: '1.6' }}>
           Developed for Sound, Motion, and Computer Interaction at Northeastern University, focusing on advanced audio processing, computer vision, and interactive systems.
+        </p>
+        <h2 className='subtitle'>Team</h2>
+        <p style={{ marginBottom: '1rem', lineHeight: '1.6' }}>
+          Developed by KenNikolas Varga for Sound, Motion, and Computer Interaction at Northeastern University.
         </p>
       </div>
     </div>
