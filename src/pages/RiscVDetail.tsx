@@ -2,9 +2,9 @@ import { motion } from 'framer-motion'
 import TypewriterText from '../components/TypewriterText.tsx'
 import PDFViewer from '../components/PDFViewer.tsx'
 import ImageCarousel from '../components/ImageCarousel.tsx'
-import riscv_pc from '../assets/riscv.png'
-import simulation_screenshot from '../assets/simulation.png'
-import riscv_design from '../assets/riscv_design.png'
+import riscv_pc from '../assets/riscv/pc.png'
+import simulation_screenshot from '../assets/riscv/simulation.png'
+import riscv_design from '../assets/riscv/design.png'
 
 export default function RiscVDetail() {
   return (

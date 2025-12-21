@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import TypewriterText from "../components/TypewriterText";
 import CustomPdfViewer from "../components/PDFViewer.tsx";
-import granspec_dist_reverb_snip from "../assets/granspec_dist_reverbsnip.png";
-import granspect_drywet from "../assets/granspec_drywet.png";
-import granspec_gran_snip from "../assets/granspec_gran_snip.png";
+import granspec_dist_reverb_snip from "../assets/granspec/dist_reverbsnip.png";
+import granspect_drywet from "../assets/granspec/drywet.png";
+import granspec_gran_snip from "../assets/granspec/gran_snip.png";
 
 import ImageCarousel from "../components/ImageCarousel.tsx";
 

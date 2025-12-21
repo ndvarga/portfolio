@@ -4,12 +4,12 @@ import TypewriterText from '../components/TypewriterText.tsx'
 import SpinningShadowImage from '../components/SpinningShadowImage.tsx'
 import ImagePreloader from '../components/ImagePreloader.tsx'
 import SimpleTimeline from '../components/SimpleTimeline.tsx'
-import headshot from '../assets/headshot.jpeg'
-import signUnderConstruction from '../assets/HeHeartlandLane5025imagesconstruction.gif'
-import guyUnderConstruction from '../assets/CaCapeCanaveral8167brunounderconstruction.gif'
-import barUnderConstruction from '../assets/ArArea51Shadowlands5031Under-Construction.gif'
-import githubIcon from '../assets/github-mark-white.png'
-import linkedinIcon from '../assets/linkedin-icon-white-png-transparent.png'
+import headshot from '../assets/shared/headshot.jpeg'
+import signUnderConstruction from '../assets/shared/HeHeartlandLane5025imagesconstruction.gif'
+import guyUnderConstruction from '../assets/shared/CaCapeCanaveral8167brunounderconstruction.gif'
+import barUnderConstruction from '../assets/shared/ArArea51Shadowlands5031Under-Construction.gif'
+import githubIcon from '../assets/shared/github-mark-white.png'
+import linkedinIcon from '../assets/shared/linkedin-icon-white-png-transparent.png'
 import { AspectRatioImage } from '../utils.tsx'
 
 function Home() {
@@ -117,51 +117,7 @@ function Home() {
         <h2 className='subtitle' style={{ textAlign: 'left', margin: '2rem 2rem 1rem' }}>Timeline</h2>
         <SimpleTimeline showProjects={true} showCoops={true} showEducation={true} />
         <h2 className='subtitle' style={{ marginTop: '4rem', marginLeft: '2rem', textAlign: 'left' }}>Cool Things I like doing</h2>
-        <div style={{ margin: '2rem 2rem' }}>
-          <iframe
-            title='SoundCloud Playlist'
-            width='100%'
-            height='300'
-            scrolling='no'
-            frameBorder='no'
-            allow='autoplay'
-            src='https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%3Aplaylists%3A1986892924%3Fsecret_token%3Ds-kbe8bcKnaxd&color=%23bbb7b1&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true'
-          />
-          <div
-            style={{
-              fontSize: 10,
-              color: '#cccccc',
-              lineBreak: 'anywhere',
-              wordBreak: 'normal',
-              overflow: 'hidden',
-              whiteSpace: 'nowrap',
-              textOverflow: 'ellipsis',
-              fontFamily:
-                'Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif',
-              fontWeight: 100,
-            }}
-          >
-            <a
-              href="https://soundcloud.com/nik_mmusic"
-              title="nik_"
-              target="_blank"
-              rel="noreferrer"
-              style={{ color: '#cccccc', textDecoration: 'none' }}
-            >
-              nik_
-            </a>{' '}
-            ·{' '}
-            <a
-              href="https://soundcloud.com/nik_mmusic/sets/case-study-hyperfreak/s-kbe8bcKnaxd"
-              title="case study hyperfreak"
-              target="_blank"
-              rel="noreferrer"
-              style={{ color: '#cccccc', textDecoration: 'none' }}
-            >
-              case study hyperfreak
-            </a>
-          </div>
-        </div>
+        
       </motion.div>
     </ImagePreloader>  
   );

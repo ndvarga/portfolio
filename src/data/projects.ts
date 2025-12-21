@@ -1,8 +1,8 @@
-import candlemakerTeam from '../assets/candlemaker_team.jpg'
-import tubenderTeam from '../assets/tubender_team.jpg'
-import giano_team from '../assets/giano_team.jpg'
-import riscv_design from '../assets/riscv_design.png'
-import granspec_dist_reverb_snip from '../assets/granspec_dist_reverbsnip.png'
+import candlemakerTeam from '../assets/candlemaker/team.jpg'
+import tubenderTeam from '../assets/tubender/team.jpg'
+import giano_team from '../assets/giano/team.jpg'
+import riscv_design from '../assets/riscv/design.png'
+import granspec_dist_reverb_snip from '../assets/granspec/dist_reverbsnip.png'
 
 export interface Project {
   name: string;

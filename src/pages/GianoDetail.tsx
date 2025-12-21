@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion'
 import TypewriterText from '../components/TypewriterText.tsx'
 import ImageCarousel from '../components/ImageCarousel.tsx'
-import gianoPcb from '../assets/giano_pcb.jpg'
-import piano_hand from '../assets/piano_hand.jpeg'
-import piano_mask from '../assets/piano_mask.jpeg'
-import cropped_and_cleaned from '../assets/cleaned_and_cropped.png'
-import example_mask from '../assets/example_mask_giano.png'
+import gianoPcb from '../assets/giano/pcb.jpg'
+import piano_hand from '../assets/giano/piano_hand.jpeg'
+import piano_mask from '../assets/giano/piano_mask.jpeg'
+import cropped_and_cleaned from '../assets/giano/cleaned_and_cropped.png'
+import example_mask from '../assets/giano/example_mask.png'
 import PDFViewer from '../components/PDFViewer.tsx'
 
 function GianoDetail() {
