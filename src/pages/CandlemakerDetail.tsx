@@ -2,6 +2,7 @@ import { useState, Suspense } from 'react'
 import { motion } from 'framer-motion'
 import VmrlModel from '../components/VmrlModel.tsx'
 import TypewriterText from '../components/TypewriterText.tsx'
+import PDFViewer from '../components/PDFViewer.tsx';
 
 function CandlemakerDetail() {
   //TODO: description, product pictures, fix model (why is it broken?), maybe add videos
@@ -19,8 +20,14 @@ function CandlemakerDetail() {
         <h1 className='project-page-title'>
           <TypewriterText text='Candlemaker' />
         </h1>
+        <h2 className='subtitle'>About</h2>
+        <p style={{ marginBottom: '2rem', lineHeight: '1.6' }}>
+          Candlemaker is a fully automated tabletop device for candle enthusiasts who want to make their own candles. 
+          The project was developed to offer an inexpensive, all-in-one alternative to current solutions for home candlemaking.
+        </p>
       </motion.div>
-      <div style={{ height: '400px', width: '100%', margin: '2rem 0' }}>
+      <h2 className='subtitle'>PCB</h2>
+      <div style={{ height: '400px', width: '80vw', margin: '2rem 0' }}>
         <Suspense fallback={
           <div style={{
             height: '100%',
@@ -57,6 +64,15 @@ function CandlemakerDetail() {
             onLoad={() => setModelLoaded(true)}
           />
         </Suspense>
+      </div>
+      <h2 className='subtitle'>Final Report</h2>
+      <PDFViewer file='/portfolio/Candlemaker_FinalReport.pdf' />
+      <h2 className='subtitle'>System Components</h2>
+      <div style={{ marginBottom: '2rem' }}>
+        <p style={{ marginBottom: '1rem', lineHeight: '1.6' }}>
+          The Candlemaker electrical system is composed of four main subsystems: heating, pouring, wick placement, and power.
+          I was responsible for the heating subsystem.
+        </p>
       </div>
     </div>
   )

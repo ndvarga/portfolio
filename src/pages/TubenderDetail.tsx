@@ -3,9 +3,11 @@ import { motion } from 'framer-motion'
 import VmrlModel from '../components/VmrlModel.tsx'
 import TypewriterText from '../components/TypewriterText.tsx'
 import ImageCarousel from '../components/ImageCarousel.tsx'
+import PDFViewer from '../components/PDFViewer.tsx';
 import tubenderTeam from '../assets/tubender/team.jpg'
 import tubenderSystemImage from '../assets/tubender/system_image.jpg'
-
+import pcbTopView from '../assets/tubender/pcb_top_view.JPG'
+import motorMovementVideo from '../assets/tubender/motor_movement.MOV'
 // TODO: add videos and more pictures, add final report
 
 function TubenderDetail() {
@@ -27,6 +29,8 @@ function TubenderDetail() {
           images={[
             { src: tubenderTeam, alt: 'Tubender Team' },
             { src: tubenderSystemImage, alt: 'Tubender System' },
+            { src: pcbTopView, alt: 'Tubender PCB Top View' },
+            { src: motorMovementVideo, alt: 'Tubender Motor Movement' },
           ]}
           width="100%"
           height={500}
@@ -88,7 +92,8 @@ function TubenderDetail() {
           </div>
         </Suspense>
       </div>
-
+      <h2 className='subtitle'>Final Report</h2>
+      <PDFViewer file='/portfolio/Tubender_FinalReport.pdf' />
       <div style={{ margin: '2rem 0' }}>
         <h2 className='subtitle'>System Components</h2>
         <div style={{ marginBottom: '2rem' }}>
@@ -108,7 +113,7 @@ function TubenderDetail() {
 
           <h3 style={{ marginTop: '1.5rem', marginBottom: '0.5rem' }}>Control System</h3>
           <p style={{ marginBottom: '1rem', lineHeight: '1.6' }}>
-            The device includes a control system that allows users to program bend angles and positions, ensuring 
+            The device includes a control system that allows users to program commonly usedbend angles and positions, ensuring 
             precise and repeatable results. The PCB design integrates motor control, sensor feedback, and user 
             interface components.
           </p>

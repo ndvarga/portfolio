@@ -108,21 +108,47 @@ export default function ImageCarousel({
         }}
       >
         <AnimatePresence mode="wait">
-          <motion.img
-            key={currentIndex}
-            src={images[currentIndex].src}
-            alt={images[currentIndex].alt}
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -100 }}
-            transition={{ duration: 0.5, ease: 'easeInOut' }}
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'contain',
-              borderRadius: '8px',
-            }}
-          />
+          {(() => {
+            const currentSrc = images[currentIndex].src;
+            const isVideo = /\.(mov|mp4|webm|avi)$/i.test(currentSrc);
+            if (isVideo) {
+              return (
+                <motion.video
+                  key={currentIndex}
+                  src={currentSrc}
+                  controls
+                  muted
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -100 }}
+                  transition={{ duration: 0.5, ease: 'easeInOut' }}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'contain',
+                    borderRadius: '8px',
+                  }}
+                />
+              );
+            }
+            return (
+              <motion.img
+                key={currentIndex}
+                src={currentSrc}
+                alt={images[currentIndex].alt}
+                initial={{ opacity: 0, x: 100 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -100 }}
+                transition={{ duration: 0.5, ease: 'easeInOut' }}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'contain',
+                  borderRadius: '8px',
+                }}
+              />
+            );
+          })()}
         </AnimatePresence>
       </div>
 
