@@ -9,31 +9,20 @@ const tempRepo = join(process.cwd(), '.deploy-temp');
 
 console.log('Setting up custom deployment with Git LFS...');
 
-// Copy .gitattributes to dist
-if (existsSync(gitattributesPath) && existsSync(distDir)) {
-  copyFileSync(gitattributesPath, join(distDir, '.gitattributes'));
-  console.log('✓ Copied .gitattributes to dist');
-}
-
 // Clean up any existing temp repo
 if (existsSync(tempRepo)) {
   rmSync(tempRepo, { recursive: true, force: true });
 }
 
-// Create temp directory and initialize git repo with LFS
+// Create temp directory and initialize git repo WITHOUT LFS
+// (dist contains built assets that should be deployed as-is, not as LFS pointers)
 mkdirSync(tempRepo, { recursive: true });
 
 try {
   // Initialize git repo
   execSync('git init', { cwd: tempRepo, stdio: 'inherit' });
   
-  // Initialize LFS
-  execSync('git lfs install', { cwd: tempRepo, stdio: 'inherit' });
-  
-  // Copy .gitattributes
-  if (existsSync(join(distDir, '.gitattributes'))) {
-    copyFileSync(join(distDir, '.gitattributes'), join(tempRepo, '.gitattributes'));
-  }
+  // DO NOT initialize LFS - we want to deploy actual files, not LFS pointers
   
   // Copy all files from dist
   console.log('Copying files from dist...');
@@ -62,7 +51,7 @@ try {
     stdio: 'inherit' 
   });
   
-  // Add all files
+  // Add all files (without LFS - these are built assets)
   execSync('git add .', { cwd: tempRepo, stdio: 'inherit' });
   
   // Commit
