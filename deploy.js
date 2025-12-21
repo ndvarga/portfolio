@@ -14,15 +14,22 @@ if (existsSync(tempRepo)) {
   rmSync(tempRepo, { recursive: true, force: true });
 }
 
-// Create temp directory and initialize git repo WITHOUT LFS
-// (dist contains built assets that should be deployed as-is, not as LFS pointers)
+// Create temp directory and initialize git repo WITH LFS
+// (needed for large files like videos that exceed GitHub's 100MB limit)
 mkdirSync(tempRepo, { recursive: true });
 
 try {
   // Initialize git repo
   execSync('git init', { cwd: tempRepo, stdio: 'inherit' });
   
-  // DO NOT initialize LFS - we want to deploy actual files, not LFS pointers
+  // Initialize LFS (needed for large files)
+  execSync('git lfs install', { cwd: tempRepo, stdio: 'inherit' });
+  
+  // Copy .gitattributes to temp repo so LFS knows which files to track
+  if (existsSync(gitattributesPath)) {
+    copyFileSync(gitattributesPath, join(tempRepo, '.gitattributes'));
+    console.log('✓ Copied .gitattributes for LFS tracking');
+  }
   
   // Copy all files from dist
   console.log('Copying files from dist...');
@@ -51,7 +58,7 @@ try {
     stdio: 'inherit' 
   });
   
-  // Add all files (without LFS - these are built assets)
+  // Add all files (LFS will automatically track large files based on .gitattributes)
   execSync('git add .', { cwd: tempRepo, stdio: 'inherit' });
   
   // Commit

@@ -1,19 +1,5 @@
-# Video files (large files that need LFS)
 *.mp4 filter=lfs diff=lfs merge=lfs -text
-*.mov filter=lfs diff=lfs merge=lfs -text
 *.MOV filter=lfs diff=lfs merge=lfs -text
+*.mov filter=lfs diff=lfs merge=lfs -text
 *.webm filter=lfs diff=lfs merge=lfs -text
-*.avi filter=lfs diff=lfs merge=lfs -text
-
-# PDF files (can be large)
-*.pdf filter=lfs diff=lfs merge=lfs -text
-
-# 3D model files (can be large)
-*.wrl filter=lfs diff=lfs merge=lfs -text
-*.obj filter=lfs diff=lfs merge=lfs -text
-*.fbx filter=lfs diff=lfs merge=lfs -text
-*.glb filter=lfs diff=lfs merge=lfs -text
-*.gltf filter=lfs diff=lfs merge=lfs -text
-
-# Images are typically small enough for regular Git
-# Only use LFS for images if they're individually > 50MB
+t
