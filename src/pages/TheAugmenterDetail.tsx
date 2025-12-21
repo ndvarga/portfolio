@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion'
 import TypewriterText from '../components/TypewriterText.tsx'
 import PDFViewer from '../components/PDFViewer.tsx';
-import theAugmenterVideo from '../assets/theaugmenter/final_video.mp4';
 
 function TheAugmenterDetail() {
   return (
@@ -16,7 +15,7 @@ function TheAugmenterDetail() {
         </h1>
       </motion.div>
       <h2 className='subtitle'>Demo Video</h2>
-      <video src={theAugmenterVideo} controls style={{ width: '80vw', height: 'auto', margin: '2rem auto', display: 'block' }} />
+      <video src="/portfolio/final_video.mp4" controls style={{ width: '80vw', height: 'auto', margin: '2rem auto', display: 'block' }} />
       <div style={{ margin: '2rem 0' }}>
         <h2 className='subtitle'>About</h2>
         <p style={{ marginBottom: '2rem', lineHeight: '1.6' }}>
